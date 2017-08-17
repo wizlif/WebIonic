@@ -18,13 +18,13 @@ export class ReportsProvider {
   }
 
   getGenderStat() {
-    return this.http.get('/api/gender_order_stat')
+    return this.http.get(this.global.api_url+'/api/gender_order_stat')
       .map(res =>res.json())
       .catch((error: any) => Observable.throw(error.json() || 'Server error'));
   }
 
   getDistrictStat() {
-    return this.http.get('/api/district_order_stat')
+    return this.http.get(this.global.api_url+'/api/district_order_stat')
       .map(res =>res.json())
       .catch((error: any) => Observable.throw(error.json() || 'Server error'));
   }

@@ -719,7 +719,7 @@ var LoginPage = (function () {
         });
         loader.present();
         new Promise(function (resolve) {
-            _this.http.post('/api/login', _this.login.value)
+            _this.http.post(_this.global.api_url + '/api/login', _this.login.value)
                 .map(function (res) { return res.json(); })
                 .subscribe(function (data) {
                 if (data.exist) {

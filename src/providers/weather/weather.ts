@@ -18,7 +18,7 @@ export class WeatherProvider {
   }
 
   getWeather(){
-    return this.http.get('/api/weather_info')
+    return this.http.get(this.global.api_url+'/api/weather_info')
       .map(res => res.json().map(r=>r.key))
       .catch((error: any) => Observable.throw(error.json() || 'Server error'))
   }

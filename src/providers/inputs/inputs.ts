@@ -19,19 +19,19 @@ export class InputsProvider {
   }
 
   getInputs(): Observable<Stock[]> {
-    return this.http.get( '/api/inputs_all')
+    return this.http.get( this.global.api_url+'/api/inputs_all')
       .map(res => res.json().map(r=>r.value))
       .catch((error: any) => Observable.throw(error.json() || 'Server error'))
   }
 
   getCrops(): Observable<any>{
-    return this.http.get( '/api/all_crops')
+    return this.http.get( this.global.api_url+'/api/all_crops')
       .map(res => res.json().map(r=>r.value))
       .catch((error: any) => Observable.throw(error.json() || 'Server error'))
   }
 
   getGeneralInfo(url:string): Observable<any>{
-    return this.http.get('/api/'+url)
+    return this.http.get(this.global.api_url+'/api/'+url)
       .map(res => res.json().map(r=>r.value))
       .catch((error: any) => Observable.throw(error.json() || 'Server error'));
   }

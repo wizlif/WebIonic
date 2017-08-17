@@ -27442,7 +27442,7 @@ var WeatherProvider = (function () {
         this.global = global;
     }
     WeatherProvider.prototype.getWeather = function () {
-        return this.http.get('/api/weather_info')
+        return this.http.get(this.global.api_url + '/api/weather_info')
             .map(function (res) { return res.json().map(function (r) { return r.key; }); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };

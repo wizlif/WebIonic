@@ -18011,7 +18011,7 @@ var DashboardProvider = (function () {
     DashboardProvider.prototype.getFarmers = function () {
         var f = 0;
         var v = 0;
-        return this.http.get('/api/farmers_info')
+        return this.http.get(this.global.api_url + '/api/farmers_info')
             .map(function (res) {
             res.json().map(function (r) { return (r.value.enterprise === 'Village Agent') ? v++ : f++; });
             return { f: f, v: v };
@@ -18019,37 +18019,37 @@ var DashboardProvider = (function () {
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };
     DashboardProvider.prototype.getPayments = function () {
-        return this.http.get('/api/payments')
+        return this.http.get(this.global.api_url + '/api/payments')
             .map(function (res) { return res.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };
     DashboardProvider.prototype.getEnquiries = function () {
-        return this.http.get('/api/enquiry_info')
+        return this.http.get(this.global.api_url + '/api/enquiry_info')
             .map(function (res) { return res.json().filter(function (r) { return r.value.status == 'new'; }).length; })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };
     DashboardProvider.prototype.getNewOrdersNo = function () {
-        return this.http.get('/api/new_orders_no')
+        return this.http.get(this.global.api_url + '/api/new_orders_no')
             .map(function (res) { return res.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };
     DashboardProvider.prototype.getOrdersChart = function () {
-        return this.http.get('/api/orders_chart')
+        return this.http.get(this.global.api_url + '/api/orders_chart')
             .map(function (res) { return res.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };
     DashboardProvider.prototype.getSubscribersChart = function () {
-        return this.http.get('/api/subscribers_chart')
+        return this.http.get(this.global.api_url + '/api/subscribers_chart')
             .map(function (res) { return res.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };
     DashboardProvider.prototype.getInputsChart = function () {
-        return this.http.get('/api/inputs_chart')
+        return this.http.get(this.global.api_url + '/api/inputs_chart')
             .map(function (res) { return res.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };
     DashboardProvider.prototype.getOrdersPortionChart = function () {
-        return this.http.get('/api/orders_portion')
+        return this.http.get(this.global.api_url + '/api/orders_portion')
             .map(function (res) { return res.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };

@@ -27474,7 +27474,7 @@ var PestsProvider = (function () {
         this.global = global;
     }
     PestsProvider.prototype.getPests = function () {
-        return this.http.get('/api/pest_info')
+        return this.http.get(this.global.api_url + '/api/pest_info')
             .map(function (res) { return res.json().map(function (r) { return r.value; }); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };

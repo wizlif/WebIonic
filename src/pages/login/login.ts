@@ -36,7 +36,7 @@ export class LoginPage {
     loader.present();
 
     new Promise(resolve => {
-      this.http.post('/api/login', this.login.value)
+      this.http.post(this.global.api_url+'/api/login', this.login.value)
         .map(res => res.json())
         .subscribe((data) => {
             if(data.exist){

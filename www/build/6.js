@@ -27381,13 +27381,13 @@ var OrdersProvider = (function () {
         this.global = global;
     }
     OrdersProvider.prototype.getOrders = function () {
-        return this.http.get('/api/Orders_info')
+        return this.http.get(this.global.api_url + '/api/Orders_info')
             .map(function (res) { return res.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };
     // getting orders that were finished
     OrdersProvider.prototype.getCompleteOrders = function () {
-        return this.http.get('/api/Orders_info')
+        return this.http.get(this.global.api_url + '/api/Orders_info')
             .map(function (res) { return res.json().filter(function (item) { return item.key.status === 'complete'; }); });
     };
     return OrdersProvider;

@@ -6202,17 +6202,17 @@ var InputsProvider = (function () {
         this.global = global;
     }
     InputsProvider.prototype.getInputs = function () {
-        return this.http.get('/api/inputs_all')
+        return this.http.get(this.global.api_url + '/api/inputs_all')
             .map(function (res) { return res.json().map(function (r) { return r.value; }); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["Observable"].throw(error.json() || 'Server error'); });
     };
     InputsProvider.prototype.getCrops = function () {
-        return this.http.get('/api/all_crops')
+        return this.http.get(this.global.api_url + '/api/all_crops')
             .map(function (res) { return res.json().map(function (r) { return r.value; }); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["Observable"].throw(error.json() || 'Server error'); });
     };
     InputsProvider.prototype.getGeneralInfo = function (url) {
-        return this.http.get('/api/' + url)
+        return this.http.get(this.global.api_url + '/api/' + url)
             .map(function (res) { return res.json().map(function (r) { return r.value; }); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_4_rxjs_Rx__["Observable"].throw(error.json() || 'Server error'); });
     };

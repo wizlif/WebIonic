@@ -10,7 +10,7 @@ export class DiseasesProvider {
   }
 
   getDiseases():Observable<any>{
-    return this.http.get('/api/disease_info')
+    return this.http.get(this.global.api_url+'/api/disease_info')
       .map(res =>res.json().map(r=>r.value))
       .catch((error: any) => Observable.throw(error.json() || 'Server error'));
   }

@@ -18,7 +18,7 @@ export class EnquiriesProvider {
   }
 
   getEnquiries():Observable<any>{
-    return this.http.get('/api/enquiry_info')
+    return this.http.get(this.global.api_url+'/api/enquiry_info')
       .map(res =>res.json().map(r=>r.value))
       .catch((error: any) => Observable.throw(error.json() || 'Server error'));
   }

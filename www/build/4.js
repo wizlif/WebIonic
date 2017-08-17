@@ -27558,7 +27558,7 @@ var DiseasesProvider = (function () {
         this.global = global;
     }
     DiseasesProvider.prototype.getDiseases = function () {
-        return this.http.get('/api/disease_info')
+        return this.http.get(this.global.api_url + '/api/disease_info')
             .map(function (res) { return res.json().map(function (r) { return r.value; }); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"].throw(error.json() || 'Server error'); });
     };

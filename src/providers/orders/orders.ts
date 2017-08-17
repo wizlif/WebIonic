@@ -19,14 +19,14 @@ export class OrdersProvider {
 
   getOrders()
   {
-    return this.http.get('/api/Orders_info')
+    return this.http.get(this.global.api_url+'/api/Orders_info')
       .map(res =>res.json())
       .catch((error: any) => Observable.throw(error.json() || 'Server error'))
   }
 
   // getting orders that were finished
   getCompleteOrders() {
-    return this.http.get('/api/Orders_info')
+    return this.http.get(this.global.api_url+'/api/Orders_info')
       .map(res =>res.json().filter((item) => item.key.status === 'complete'));
   }
 
