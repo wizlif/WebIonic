@@ -639,7 +639,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var GlobalProvider = (function () {
     function GlobalProvider(toastCtrl) {
         this.toastCtrl = toastCtrl;
-        this.api_url = "http://localhost:3000";
+        this.api_url = "https://ezyagric.com/extensionapi";
         this.months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     }
     GlobalProvider.prototype.toast = function (message, style) {

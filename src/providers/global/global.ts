@@ -4,7 +4,7 @@ import {ToastController} from "ionic-angular";
 import {LoginPage} from "../../pages/login/login";
 @Injectable()
 export class GlobalProvider {
-  api_url:string="http://localhost:3000";
+  api_url:string="https://ezyagric.com/extensionapi";
   months=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   role;
   constructor(private toastCtrl: ToastController) {
