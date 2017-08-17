@@ -13,6 +13,7 @@ $app-direction: ltr;
 
 
 @import "ionic.globals";
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
 
 
 // Shared Variables
@@ -38,7 +39,27 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  yellow-light:#e67e22,
+  yellow-dark: #f39c12,
+  orange:#FFA500,
+  orange-light:#e67e22,
+  orange-dark:#d35400,
+  purple-light:#9b59b6,
+  purple-dark:#8e44ad,
+  maroon-light:#e74c3c,
+  maroon-dark:#c0392b,
+  blue-light:#3498db,
+  blue-dark:#2980b9,
+  info-color:#00529B,
+  info-background:#BDE5F8,
+  error-color: #D8000C,
+  error-background:#FFBABA,
+  success-color:#4F8A10,
+  success-background:#01a847,
+  warning-color:#9F6000,
+  warning-background:#ff9900,
+  material-secondary:#e91e63,
 );
 
 
@@ -53,6 +74,7 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+$img-placeholder-background:	linear-gradient(45deg, map_get($colors,blue-light),map_get($colors,blue-dark), #fff);
 
 
 
@@ -86,3 +108,4 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+

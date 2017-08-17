@@ -1,0 +1,32 @@
+page-login {
+
+
+  @media only screen and (min-width: 769px) {
+    ion-grid {
+      justify-content: center;
+      width: 50% !important;
+      height: 100% !important;
+    }
+
+    h1{
+      font-weight: bolder;
+      font-size: 5rem;
+      text-shadow: 1px 1px 1px map_get($colors,primary);
+      letter-spacing: 1pt;
+      line-height: 2;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    h1{
+      font-weight: bolder;
+      font-size: 3rem;
+      text-shadow: 1px 1px 1px map_get($colors,primary);
+      letter-spacing: 1pt;
+      line-height: 2;
+    }
+
+    h6{
+      font-size: 1rem;
+    }
+  }
+}

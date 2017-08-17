@@ -1,0 +1,204 @@
+<!--
+  Generated template for the ReceivedOrdersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Received Orders</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+
+        <th>
+          #
+        </th>
+
+        <th
+          icon-only
+          tooltip="Toggle to sort by name"
+          duration="1000"
+          positionH="right"
+          arrow>
+          Name
+          <ion-icon
+            [name]="(eT==undefined)?'code':(eT==true)?'arrow-dropup':'arrow-dropdown'"
+            class="float-right"
+            (click)="sort.exporter()">
+          </ion-icon>
+        </th>
+
+        <th>
+          Contact
+        </th>
+
+        <th
+          icon-only
+          tooltip="Toggle to sort by category"
+          duration="1000"
+          positionH="right"
+          arrow>
+          Country
+          <ion-icon
+            [name]="(qT==undefined)?'code':(qT==true)?'arrow-dropup ':'arrow-dropdown'"
+            class="float-right"
+            (click)="sort.quantity()">
+          </ion-icon>
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          Payment Method
+        </th>
+
+        <th
+          icon-only
+          tooltip="Toggle to sort by unit"
+          duration="1000"
+          positionH="right"
+          arrow>
+          Items
+          <ion-icon
+            [name]="(aT==undefined)?'code':(aT==true)?'arrow-dropup':'arrow-dropdown'"
+            class="float-right"
+            (click)="sort.available()">
+          </ion-icon>
+        </th>
+
+        <th
+          icon-only
+          tooltip="Toggle to sort by quantity"
+          duration="1000"
+          positionH="right"
+          arrow>
+          Amount
+          <ion-icon
+            [name]="(aT==undefined)?'code':(aT==true)?'arrow-dropup':'arrow-dropdown'"
+            class="float-right"
+            (click)="sort.available()">
+          </ion-icon>
+        </th>
+
+        <th
+          icon-only
+          tooltip="Toggle to sort by supplier"
+          duration="1000"
+          positionH="left"
+          arrow>
+          Date
+          <ion-icon
+            [name]="(aT==undefined)?'code':(aT==true)?'arrow-dropup':'arrow-dropdown'"
+            class="float-right"
+            (click)="sort.available()">
+          </ion-icon>
+        </th>
+
+        <th>Actions
+          <ion-icon
+            class="ion-ios-funnel float-right"
+            (click)="filters=!filters"
+            tooltip="Toggle to filter"
+            positionH="left"
+            arrow
+            duration="1000">
+          </ion-icon>
+        </th>
+      </tr>
+
+      <tr *ngIf="filters">
+        <th></th>
+        <th>
+          <ion-item>
+            <ion-label floating>Name</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </th>
+        <th>
+        </th>
+        <th>
+          <ion-item>
+            <ion-label floating>District/Country</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </th>
+        <th></th>
+        <th>
+          <ion-item>
+            <ion-label floating>Payment Method</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </th>
+        <th>
+          <ion-item>
+            <ion-label floating>Total Items</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </th>
+        <th>
+          <ion-item>
+            <ion-label floating>Amount</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </th>
+        <th>
+          <ion-item>
+            <ion-label floating>From Date</ion-label>
+            <ion-datetime></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>To Date</ion-label>
+            <ion-datetime></ion-datetime>
+          </ion-item>
+        </th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of ordersData; let i = index">
+        <td>{{(itemsPerPage*(bigCurrentPage-1))+(i+1)}}</td>
+        <td text-capitalize>{{order?.doc?.name}}</td>
+        <td>{{order?.doc?.contact}}</td>
+        <td text-capitalize>{{order?.doc?.district}}</td>
+        <td text-capitalize>{{order?.key?.status}}</td>
+        <td text-capitalize>{{order?.key?.payment=='mm'?'Mobile Money':'Cash'}}</td>
+        <td>{{order?.key?.details?.totalItems}}</td>
+        <td text-right>{{order?.key?.details?.totalCost}}</td>
+        <td text-capitalize>{{order?.key?.details?.time}}</td>
+        <td>
+          <div class="btn-group">
+            <button  (click)="viewDetails({status:order?.key?.status,name:order?.doc?.name,method:order?.key?.payment,noItems:order?.key?.details?.totalItems,amount:order?.key?.details?.totalCost,date:order?.key?.details?.time,order:order?.key?.order})" icon-only color="primary" ion-button tooltip="View Details" positionV="top" arrow duration="500">
+              <ion-icon name="ios-eye"></ion-icon>
+            </button>
+            <button [disabled]="order?.key?.status == 'complete' || order?.key?.status=='canceled'" icon-only color="secondary" ion-button tooltip="Mark as complete" positionV="top" arrow duration="500">
+              <ion-icon name="md-done-all"></ion-icon>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <pagination
+      previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"
+      [totalItems]="bigTotalItems" [(ngModel)]="bigCurrentPage" [maxSize]="maxSize" [itemsPerPage]="itemsPerPage"
+      class="pagination-sm"
+      [boundaryLinks]="true" [rotate]="false" (pageChanged)="pageChanged($event)"></pagination>
+  </div>
+</ion-content>

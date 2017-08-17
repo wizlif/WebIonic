@@ -1,0 +1,11 @@
+page-general-report {
+  .white{
+    color: map_get($colors,light);
+  }
+
+  ion-card-header {
+    color: map_get($colors,light) !important;
+    font-weight: bold;
+    background-color: transparent !important;
+  }
+}

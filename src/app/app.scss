@@ -14,3 +14,208 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+[full]{
+  width: 100%;
+}
+
+[primary-background]{
+  background: map_get($colors,primary);
+}
+[primary-background-lighter]{
+  background: lighten(map_get($colors,primary),30%) ;
+}
+[primary-background-lightest]{
+  background: lighten(map_get($colors,primary),35%) ;
+}
+
+[primary-font]{
+  color:map_get($colors,primary) ;
+}
+
+[primary-border]{
+  border: 1px solid map_get($colors,primary);
+}
+
+.turn {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.alert-radio-label {
+  font-size: 12px;
+}
+
+.alert-checkbox-label{
+  font-size: 12px;
+}
+
+input[type=file] {
+  //visibility: hidden;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.table {
+  > thead {
+    > tr {
+      > th {
+        border-top: none;
+        font-size: 13px;
+        line-height: 21px;
+        font-weight: 500;
+        color: map_get($colors,primary);
+        padding: 15px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #d7d7d7;
+      }
+    }
+  }
+
+  > tbody {
+    > tr {
+      background: #ffffff;
+      border-bottom: 1px solid #d7d7d7;
+      > td {
+        border-top: none;
+        padding: 12px 18px;
+        color: #616161;
+        font-size: 14px;
+        line-height: 21px;
+      }
+    }
+    tr:hover {
+      background: #fafafa;
+    }
+  }
+}
+
+.red{
+  background: map_get($colors,danger) !important;
+}
+
+.orange{
+background:map_get($colors,orange) !important;
+}
+
+.green{
+  background: map_get($colors,secondary) !important;
+}
+
+[notification-button] {
+  position: relative;
+  width: 42px;
+  top:1px;
+  right: 1px;
+  font-size: 20px;
+  overflow: visible!important;
+}
+
+
+[notifications-badge] {
+  background-color: map_get($colors,danger);;
+  border:1px solid map_get($colors,danger);
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  border-radius: 0;
+  font-size:10px;
+}
+
+[notifications-badge-secondary] {
+  background-color: map_get($colors,secondary);
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  border-radius: 0;
+  font-size:10px;
+}
+
+[dashboard-button]{
+
+}
+
+[dash-box-font]{
+  font-size: 80px;
+}
+
+.dash-box-text-font{
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+[translucent]{
+  background: rgba(0,0,0,0.2);
+}
+
+[translucent-inner]{
+  opacity: 0.2;
+}
+
+[white]{
+  color: map_get($colors,light);
+}
+
+[hand="true"]{
+  cursor: pointer;
+}
+
+[bold="true"]{
+
+}
+
+[data-background-color="purple"]{
+  background: linear-gradient(60deg, #ab47bc, #8e24aa);
+  box-shadow: 0 12px 20px -10px rgba(purple, 0.14 * 2),
+  0  4px 20px 0px rgba(0,0,0, 0.12 ),
+  0  7px 8px -5px rgba(purple, 0.2 );
+}
+
+[data-background-color="blue"]{
+  background: linear-gradient(60deg, #26c6da, #00acc1);
+  box-shadow: 0 12px 20px -10px rgba(#00FFFF, 0.14 * 2),
+  0  4px 20px 0px rgba(0,0,0, 0.12),
+  0  7px 8px -5px rgba(#00FFFF, 0.2);
+}
+
+[data-background-color="green"]{
+  background: linear-gradient(60deg, #66bb6a, #43a047);
+  box-shadow: 0 12px 20px -10px rgba(green, 0.14  * 2),
+  0  4px 20px 0px rgba(0,0,0, 0.12 ),
+  0  7px 8px -5px rgba(green, 0.2 );
+}
+
+[data-background-color="orange"]{
+  background: linear-gradient(60deg, #ffa726, #fb8c00);
+  box-shadow: 0 12px 20px -10px rgba(orange, 0.14  * 2),
+  0  4px 20px 0px rgba(0,0,0, 0.12),
+  0  7px 8px -5px rgba(orange, 0.2);
+}
+
+[data-background-color="red"]{
+  background: linear-gradient(60deg, #ef5350, #e53935);
+  box-shadow: 0 12px 20px -10px rgba(red, 0.14  * 2),
+  0  4px 20px 0px rgba(0,0,0, 0.12),
+  0  7px 8px -5px rgba(red, 0.2);
+}
+
+
+.toast-error{
+  > div {
+    background: color($colors, danger) !important;
+  }
+}
+
+.toast-success{
+  > div {
+    background: color($colors, success-background) !important;
+    color: color($colors, success-color) !important;
+  }
+}

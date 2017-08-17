@@ -1,44 +1,46 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MenuController, Nav} from 'ionic-angular';
+import {MenuOptionModel, SideMenuComponent} from "../components/side-menu/side-menu";
+import {SIDE_MENU} from "./app.metadata";
+import {LoginPage} from "../pages/login/login";
+import {GlobalProvider} from "../providers/global/global";
 
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class MyApp{
   @ViewChild(Nav) nav: Nav;
+  @ViewChild(SideMenuComponent) sideMenu: SideMenuComponent;
 
-  rootPage: any = HomePage;
+  sidemenu;
 
-  pages: Array<{title: string, component: any}>;
+  root:any;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
+  constructor(private menuCtrl: MenuController,private global:GlobalProvider) {
+    this.sidemenu=SIDE_MENU;
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
-    ];
-
+    if(this.global.role === undefined){
+      this.root= LoginPage;
+    }else{
+      this.root='dashboard';
+    }
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+  // Redirect the user to the selected page
+  public selectOption(option: MenuOptionModel): void {
+    this.menuCtrl.close().then(() => {
+
+      // Collapse all the options
+      this.sideMenu.collapseAllOptions();
+
+      // Redirect to the selected page
+      this.nav.setRoot(option.component || 'dashboard', { 'title': option.displayName });
     });
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+  public collapseMenuOptions(): void {
+    // Collapse all the options
+    this.sideMenu.collapseAllOptions();
   }
+
 }

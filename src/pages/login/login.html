@@ -1,0 +1,31 @@
+<ion-content padding>
+  <ion-grid fixed>
+    <form [formGroup]="login">
+      <ion-row>
+        <ion-col col-12 text-center>
+          <h1 ion-text color="primary">EzyAgric - Extension</h1>
+        </ion-col>
+        <ion-col col-12>
+          <ion-list inset>
+            <ion-item>
+              <ion-label floating>Username</ion-label>
+              <ion-input type="text" formControlName="username" [(ngModel)]="username"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" formControlName="password" [(ngModel)]="password"></ion-input>
+            </ion-item>
+            <ion-item>
+              <button style="height: 5rem" ion-button block type="submit" [disabled]="!login.valid" (click)="submit()">Login</button>
+            </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+</ion-content>
+<ion-footer text-center>
+  <h6>© 2017 Akorion Co LTD     |    Terms and conditions     |   Powered by Akorion</h6>
+</ion-footer>

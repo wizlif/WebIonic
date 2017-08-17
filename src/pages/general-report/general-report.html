@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>General Report</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xl-6 no-padding>
+        <ion-card data-background-color="green">
+          <ion-card-header text-center>
+            Inputs Sales by Sex
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #donutCanvas height="160"></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xl-6 no-padding>
+        <ion-card data-background-color="blue">
+          <ion-card-header text-center>
+            Inputs Sales by Category
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #donutCanvas height="160"></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xl-6 no-padding>
+        <ion-card data-background-color="red">
+          <ion-card-header text-center>
+            Inputs Sales by District
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #donutCanvas height="160"></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-12 col-lg-6 col-md-12 col-sm-12 col-xl-6 no-padding>
+        <ion-card data-background-color="purple">
+          <ion-card-header text-center>
+            Inputs Varieties by District
+          </ion-card-header>
+          <ion-card-content>
+            <canvas #donutCanvas height="160"></canvas>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

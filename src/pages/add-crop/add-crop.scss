@@ -1,0 +1,63 @@
+page-add-crop {
+  ion-content {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .vertical-align-content > *
+  {
+    display: flex!important;
+    align-content: center!important;
+    align-items: center!important;
+  }
+
+  ion-item {
+    background-color: transparent;
+    border:1px solid blue;
+    opacity: 1;
+    color: white;
+    box-sizing: border-box;
+  }
+
+  .list-md .item-block{
+    border-bottom: 1px solid white;
+  }
+
+  .list-md .item-block .item-inner{
+    border-bottom: 0px;
+  }
+
+  ion-item.item-ios.item.item-block, ion-item.item-md.item.item-block, ion-item.item-wp.item.item-block{
+    border-bottom: none;
+  }
+
+
+
+
+
+  ion-input,ion-select,input[type=file] {
+    line-height: normal;
+    //padding: 0.7em 0.0em 0em 0.0em;
+    color: black;
+    text-align: center;
+    //border:thin solid #44aedf;
+  }
+
+
+
+ /* input[type=file] + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    //color: white;
+    background-color: transparent;
+    display: inline-block;
+  }
+
+  input[type=file]:focus + label,
+  input[type=file] + label:hover {
+    //background-color: transparent;
+  }*/
+
+  .title{
+    font-weight: bolder;
+  }
+}

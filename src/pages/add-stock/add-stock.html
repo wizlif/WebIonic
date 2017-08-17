@@ -1,0 +1,122 @@
+<!--
+  Generated template for the AddStockPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add Stock</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="log-out"></ion-icon>
+        Logout
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content text-center padding>
+  <form [formGroup]="stock">
+    <ion-row >
+      <ion-col  col-12>
+        <ion-item>
+          <ion-label floating>Input Name</ion-label>
+          <ion-input type="text" [(ngModel)]="name" formControlName="name"></ion-input>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!stock.controls.name.valid && stock.controls.name.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="stock.controls.name.valid  && stock.controls.name.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Crops</ion-label>
+          <ion-select [(ngModel)]="crops" formControlName="crops" multiple="true">
+            <ion-option *ngFor="let crop of allcrops" style="font-size: 12px;">{{crop?.crop}}</ion-option>
+          </ion-select>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!stock.controls.crops.valid && stock.controls.crops.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="stock.controls.crops.valid  && stock.controls.crops.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Category</ion-label>
+          <ion-select  [(ngModel)]="category" formControlName="category" >
+            <ion-option>Pesticides</ion-option>
+            <ion-option>Seeds</ion-option>
+            <ion-option>Herbicides</ion-option>
+            <ion-option>Fertilizers</ion-option>
+            <ion-option>Farming tools</ion-option>
+          </ion-select>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!stock.controls.category.valid && stock.controls.category.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="stock.controls.category.valid  && stock.controls.category.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Description</ion-label>
+          <ion-textarea  [(ngModel)]="description" formControlName="description" >
+          </ion-textarea>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!stock.controls.description.valid && stock.controls.description.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="stock.controls.description.valid  && stock.controls.description.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Unit Price</ion-label>
+          <ion-input type="number" [(ngModel)]="unit_price" formControlName="unit_price" >
+          </ion-input>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!stock.controls.unit_price.valid && stock.controls.unit_price.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="stock.controls.unit_price.valid  && stock.controls.unit_price.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Units</ion-label>
+          <ion-select type="text" [(ngModel)]="units" formControlName="units" >
+            <ion-option>kgs</ion-option>
+            <ion-option>ltr</ion-option>
+          </ion-select>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!stock.controls.units.valid && stock.controls.units.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="stock.controls.units.valid  && stock.controls.units.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Quantity Available</ion-label>
+          <ion-input type="number" [(ngModel)]="qty" formControlName="qty" >
+          </ion-input>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!stock.controls.qty.valid && stock.controls.qty.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="stock.controls.qty.valid  && stock.controls.qty.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <label ion-text color="primary">Photo</label>
+          <input type="file" [(ngModel)]="picture" formControlName="picture" id="file" accept="image/*" (change)="uploadPic(picture)"
+                 ng2FileSelect [uploader]="uploader">
+          <label ion-button  for="file" full>
+            <ion-row full>
+              <ion-col col-8>
+                <ion-icon class="ion-ios-cloud-upload"></ion-icon>
+                {{(picture === undefined || picture.length === 0)?'Photo':picture[0].name}}
+              </ion-col>
+              <ion-col col-4 >
+                <div *ngIf="(picture === undefined || picture.length === 0);else mbs">
+
+                </div>
+                <ng-template #mbs>
+                  {{picture[0].size/1024/1024 | number:'.2'}} MBs
+                </ng-template>
+              </ion-col>
+            </ion-row>
+          </label>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!stock.controls.picture.valid && stock.controls.picture.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="stock.controls.picture.valid  && stock.controls.picture.dirty" color="secondary"></ion-icon>
+        </ion-item>
+        <progressbar [progress]="uploader.progress" *ngIf="progressOpen"></progressbar>
+      </ion-col>
+
+    </ion-row>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-navbar>
+    <button (click)="addCrop(phone)" ion-button color="primary" [disabled]="!stock.valid || uploader.progress!=100" block>Save Input</button>
+  </ion-navbar>
+</ion-footer>

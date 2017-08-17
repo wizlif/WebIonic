@@ -1,0 +1,175 @@
+<!--
+  Generated template for the DashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dashboard</ion-title>
+    <ion-buttons end>
+      <button ion-button>
+        Sales
+      </button>
+      <button ion-button clear notification-button>
+        <ion-icon name="md-mail">
+          <ion-badge  color="secondary" notifications-badge-secondary>5</ion-badge>
+        </ion-icon>
+      </button>
+      <button ion-button clear notification-button>
+        <ion-icon name="md-notifications">
+          <ion-badge  color="danger" notifications-badge>5</ion-badge>
+        </ion-icon>
+      </button>
+      <button ion-button notification-button>
+        <ion-icon name="md-settings"></ion-icon>
+      </button>
+      <button ion-button notification-button>
+        <ion-icon name="md-log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-grid>
+  <ion-row>
+    <ion-col col-12 col-lg-3 col-md-6 col-sm-12 col-xl-3 no-padding>
+      <ion-card data-background-color="blue">
+        <ion-card-content>
+          <ion-item>
+            <div item-start >
+              <div class="dash-box-text-font" white>{{ordersNo?.no | cash}}</div>
+              <h2 class="text-white">New Orders</h2>
+            </div>
+            <div item-end>
+              <ion-icon name="ios-cart" dash-box-font translucent-inner></ion-icon>
+            </div>
+          </ion-item>
+        </ion-card-content>
+        <ion-row translucent>
+          <ion-col text-center white (click)="root('received-orders')" hand="true">
+            More Info
+            <ion-icon color="light" name="ios-arrow-dropright-circle" item-right></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+    <ion-col col-12 col-lg-3 col-md-6 col-sm-12 col-xl-3 no-padding>
+      <ion-card data-background-color="green">
+        <ion-card-content>
+          <ion-item>
+            <div item-start white>
+              <div class="dash-box-text-font">{{enquiries | cash}}</div>
+              <h2 class="text-white">New Enquiries</h2>
+            </div>
+            <div item-end>
+              <ion-icon name="ios-chatbubbles" dash-box-font translucent-inner></ion-icon>
+            </div>
+          </ion-item>
+        </ion-card-content>
+        <ion-row translucent>
+          <ion-col text-center white hand="true" (click)="root('enquiries')">
+            More Info
+            <ion-icon color="light" name="ios-arrow-dropright-circle" item-right></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+    <ion-col col-12 col-lg-3 col-md-6 col-sm-12 col-xl-3 no-padding>
+      <ion-card data-background-color="purple">
+        <ion-card-content>
+          <ion-item>
+            <div item-start white>
+              <div class="dash-box-text-font">{{cash | cash}}</div>
+              <h2 class="text-white">Payments</h2>
+            </div>
+            <div item-end>
+              <ion-icon name="ios-cash" dash-box-font translucent-inner></ion-icon>
+            </div>
+          </ion-item>
+        </ion-card-content>
+        <ion-row translucent>
+          <ion-col text-center white hand="true">
+            More Info
+            <ion-icon color="light" name="ios-arrow-dropright-circle" item-right></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+    <ion-col col-12 col-lg-3 col-md-6 col-sm-12 col-xl-3 no-padding>
+      <ion-card data-background-color="red">
+        <ion-card-content>
+          <ion-item>
+            <div item-start white>
+              <div class="dash-box-text-font">{{accStat?.f | cash}}</div>
+              <h2 class="text-white">Farmers</h2>
+            </div>
+            <div item-end>
+              <ion-icon name="ios-people" dash-box-font translucent-inner></ion-icon>
+            </div>
+          </ion-item>
+        </ion-card-content>
+        <ion-row translucent>
+          <ion-col text-center white hand="true">
+            More Info
+            <ion-icon color="light" name="ios-arrow-dropright-circle" item-right></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12  col-lg-6 col-md-12 col-sm-12 col-xl-6 no-padding>
+      <ion-card data-background-color="blue">
+        <ion-card-header text-center>
+          Orders
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #barCanvas height="160"></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+    <ion-col col-12  col-lg-6 col-md-12 col-sm-12 col-xl-6 no-padding>
+      <ion-card data-background-color="orange">
+        <ion-card-header text-center>
+          Subscribers
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #lineCanvas height="160"></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+    <ion-col col-12  col-lg-6 col-md-12 col-sm-12 col-xl-6 no-padding>
+      <ion-card data-background-color="red">
+        <ion-card-header text-center>
+          Order Proportion
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #pieCanvas height="160"></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+    <ion-col col-12  col-lg-6 col-md-12 col-sm-12 col-xl-6 no-padding>
+      <ion-card data-background-color="green">
+        <ion-card-header text-center>
+          Inputs
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #donutCanvas height="160"></canvas>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>
+</ion-content>

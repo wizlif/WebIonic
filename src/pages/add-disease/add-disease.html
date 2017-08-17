@@ -1,0 +1,92 @@
+<!--
+  Generated template for the AddDiseasePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Add Disease</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content text-center padding>
+  <form [formGroup]="crop">
+    <ion-row >
+      <ion-col  col-12>
+        <ion-item>
+          <ion-label floating>Name</ion-label>
+          <ion-input type="text" [(ngModel)]="name" formControlName="name"></ion-input>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!crop.controls.name.valid && crop.controls.name.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="crop.controls.name.valid  && crop.controls.name.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Crops</ion-label>
+          <ion-select [(ngModel)]="crops" formControlName="crops" multiple="true">
+            <ion-option *ngFor="let crop of allcrops" style="font-size: 12px;">{{crop?.crop}}</ion-option>
+          </ion-select>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!crop.controls.crops.valid && crop.controls.crops.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="crop.controls.crops.valid  && crop.controls.crops.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Cause</ion-label>
+          <ion-textarea  [(ngModel)]="cause" formControlName="cause" >
+          </ion-textarea>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!crop.controls.cause.valid && crop.controls.cause.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="crop.controls.cause.valid  && crop.controls.cause.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Symptoms</ion-label>
+          <ion-textarea  [(ngModel)]="symptoms" formControlName="symptoms" >
+          </ion-textarea>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!crop.controls.symptoms.valid && crop.controls.symptoms.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="crop.controls.symptoms.valid  && crop.controls.symptoms.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Control</ion-label>
+          <ion-textarea  [(ngModel)]="control" formControlName="control" >
+          </ion-textarea>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!crop.controls.control.valid && crop.controls.control.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="crop.controls.control.valid  && crop.controls.control.dirty" color="secondary"></ion-icon>
+        </ion-item>
+
+        <ion-item>
+          <label ion-text color="primary">Photo</label>
+          <input type="file" [(ngModel)]="picture" formControlName="picture" id="file" accept="image/*" (change)="uploadPic(picture)"
+                 ng2FileSelect [uploader]="uploader">
+          <label ion-button  for="file" full>
+            <ion-row full>
+              <ion-col col-8>
+                <ion-icon class="ion-ios-cloud-upload"></ion-icon>
+                {{(picture === undefined || picture.length === 0)?'Photo':picture[0].name}}
+              </ion-col>
+              <ion-col col-4 >
+                <div *ngIf="(picture === undefined || picture.length === 0);else mbs">
+
+                </div>
+                <ng-template #mbs>
+                  {{picture[0].size/1024/1024 | number:'.2'}} MBs
+                </ng-template>
+              </ion-col>
+            </ion-row>
+          </label>
+          <ion-icon class="ion-ios-close-circle" item-right *ngIf="!crop.controls.picture.valid && crop.controls.picture.dirty" color="danger"></ion-icon>
+          <ion-icon class="ion-ios-checkmark-circle" item-right *ngIf="crop.controls.picture.valid  && crop.controls.picture.dirty" color="secondary"></ion-icon>
+        </ion-item>
+        <progressbar [progress]="uploader.progress" *ngIf="progressOpen"></progressbar>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-navbar>
+    <button (click)="addCrop(phone)" ion-button color="primary" [disabled]="!crop.valid || uploader.progress!=100" block>Save Crop</button>
+  </ion-navbar>
+</ion-footer>
