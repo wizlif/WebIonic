@@ -28,7 +28,7 @@
     "@ionic-native/status-bar": "3.12.1",
     "@ionic/storage": "2.0.1",
     "bootstrap": "^4.0.0-alpha.6",
-    "chart.js": "^2.6.0",
+    "chart.js": "^2.9.4",
     "ionic-angular": "3.5.3",
     "ionic-tooltips": "^1.0.0",
     "ionicons": "3.0.0",
